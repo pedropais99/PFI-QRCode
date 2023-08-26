@@ -1,0 +1,20 @@
+{
+ "StreamName": "pfi_camara1",
+ "ImageGenerationConfiguration":
+ {
+  "Status": "ENABLED",
+  "DestinationConfig":
+  {
+   "DestinationRegion": "us-east-1",
+   "Uri": "s3://pfi-qr-code-bucket-1/Fotos/"
+  },
+  "SamplingInterval": 3000,
+  "ImageSelectorType": "PRODUCER_TIMESTAMP",
+  "Format": "JPG",
+  "FormatConfig": {
+                "JPGQuality": "80"
+       },
+  "WidthPixels": 1920,
+  "HeightPixels": 1080
+ }
+}
