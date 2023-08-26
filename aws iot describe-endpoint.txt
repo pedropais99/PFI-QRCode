@@ -1,0 +1,1 @@
+aws iot describe-endpoint --endpoint-type iot:CredentialProvider
