@@ -15,7 +15,7 @@ El orden de ejecucion de las funciones Lambda seria el siguiente:
 
 # Explicacion del funcionamiento de la funcion "S3toS3".
 
-La funcion "S3toS3" fue realizada en el lenguaje Python. Esta misma lo que hace es, gracias a la posibilidad de Lambda de agregar disparadores o "triggers" para el arranque de sus funciones, identificar en las fotografias .jpg que se van subiendo al bucket seleccionado (las cuales son frames tomados del video transmitido por AWS Kisensis Video Stream) los codigos QR por medio del uso del servicio de AWS Rekognition. Estas imagenes que cuentan con un codigo QR detectado son filtradas y enviadas a un segundo bucket donde se realizara su decodificacion y lectura.
+La funcion "S3toS3", gracias a la posibilidad de Lambda de agregar disparadores o "triggers" para el arranque de sus funciones, identifica en las fotografias .jpg que se van subiendo al bucket origen (las cuales son frames tomados del video transmitido por AWS Kisensis Video Stream) los codigos QR por medio del uso del servicio de AWS Rekognition. Estas imagenes que cuentan con un codigo QR detectado son filtradas y enviadas a un segundo bucket destino donde se realizara su decodificacion y lectura.
 
 # Explicacion del funcionamiento de la funcion "Read_QR_Code"
 
