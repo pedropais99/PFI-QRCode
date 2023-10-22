@@ -6,7 +6,7 @@ En el siguiente documento, se explica el uso y se muestran las funciones utiliza
 
 En primer lugar es condicion necesaria y suficiente para el uso de las funciones que se encuentran en el repositorio el uso de una cuenta de AWS, manejo de Python y Linux. 
 Se necesitaran: 
-- La creacion de un bucket S3 para las funciones y otro para las librerias.
+- La creacion de un bucket S3 por funcion y otro para las librerias.
 - Una maquina virtual con sistema operativo Raspberry Pi para la retransmision de video en tiempo real.
 - Tener registrado en AWS IoT la camara con la que re realizara el streaming de video a AWS Kinesis Video Stream.
 - Habilitar la conexion a la camara del vehiculo autonomo sin el uso de credenciales.
