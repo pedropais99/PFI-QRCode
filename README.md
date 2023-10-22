@@ -9,23 +9,29 @@ Se necesitaran:
 - La creacion de un bucket S3 para las funciones y otro para las librerias.
 - Una maquina virtual con sistema operativo Raspberry Pi para la retransmision de video en tiempo real.
 - Tener registrado en AWS IoT la camara con la que re realizara el streaming de video a AWS Kinesis Video Stream.
+- Habilitar la conexion a la camara del vehiculo autonomo sin el uso de credenciales.
+    - Ingresaremos al vehiculo por medio de SSH con las credenciales dadas por la institucion.
+    - Una vez dentro, nos moveremos al di  
 - Habilitacion para el guardado del video transmitio por AWS Kinesis Video Stream en formato de imagenes .jpg con el uso de del archivo "GuardarImagenes.json" del repositorio como se muestra en la imagen.
   ![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/1e5f3db5-3aa3-4f51-a021-2336221e6a1e)
   ![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/a63c06df-b83a-41cd-832a-6ad77698d23b)
   Se debera pegar en la consola el siguiente comando:
+  ```
   - aws kinesisvideo update-image-generation-configuration \
---cli-input-json file://./update-image-generation-GuardarImagenes.json \
+  --cli-input-json file://./update-image-generation-GuardarImagenes.json \
+  ```
   Comprobamos que el archivo se haya actualizado con el siguiente comando:
+  ```
   - aws kinesisvideo describe-image-generation-configuration --stream-name pfi_camara1
+  ```
   ![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/5c49673e-1a15-428a-ae8c-a0a5b40dd40b)
 - Un SNS Topic para el envio de notificaciones por las SNS subscriptions por mail y sitio web.
-
-(EXPLICAR LA DESCARGA DE LAS LIBRERIAS UTILIZADAS, LA CONFIGURACION PARA LA TOMA DE FRAMES, CONFIGURACION DE LA HABILITACION PARA LA CONEXION ENTRE AWS KINESIS VIDEO STREAM CON EL VIDEO CAPTADO POR EL VEHICULO AUTONOMO (CONEXION POR SSH))
 
 # Descargar librerias para la decodificacion de imagenes en AWS Lambda y configurarlas como layers de la funcion.
 
 Para utilizar las librerias deberemos de descargarlas desde la consola de Cloudshell y guardarlas en un bucket S3 de la siguiente manera
--  
+-  Deberemos de movernos nuevamente a Cloudlshell y copiar el siguiente comando de git
+   - git clone https://github.com/aws-samples/Barcode-QR-Decoder-Lambda.git
 
 # ¿En que orden corren las funciones lambda del repositorio?
 
