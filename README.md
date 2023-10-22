@@ -38,6 +38,12 @@ Para utilizar las librerias deberemos de descargarlas desde la consola de Clouds
     - ``` sh Barcode-QR-Decoder-Lambda/src/code/setup.sh -b <BUCKET_NAME> ```
 - Una vez que termine el script, dentro del bucket especificado tendremos los archivos .zip.
 ![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/ad242291-27f2-4274-af0c-641d7599a9a0)
+- Dentro de AWS Lambda iremos a la seccion de Layers y crearemos las layers correspondientes.
+![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/dbbdf5c1-ad50-4b35-ba5b-b6f0ce31b6e7)
+![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/b3a5d047-6136-4a03-8fb1-3a18e3e1ae04)
+
+
+
 
 
 
