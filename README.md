@@ -31,18 +31,13 @@ Se necesitaran:
 
 Para utilizar las librerias deberemos de descargarlas desde la consola de Cloudshell y guardarlas en un bucket S3 de la siguiente manera
 -  Deberemos de movernos nuevamente a Cloudlshell y copiar el siguiente comando de git
-   - git clone https://github.com/aws-samples/Barcode-QR-Decoder-Lambda.git
+  ```
+  git clone https://github.com/aws-samples/Barcode-QR-Decoder-Lambda.git
+  ```
+- Tendremos que correr el archivo ```setup.sh``` para generar las lambda layers que seran guardadas en el bucket s3 especificado.
+    - ``` sh Barcode-QR-Decoder-Lambda/src/code/setup.sh -b <BUCKET_NAME> ```
+- Una vez que termine el script, dentro del bucket especificado tendremos los archivos .zip.
+![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/ad242291-27f2-4274-af0c-641d7599a9a0)
 
-# ¿En que orden corren las funciones lambda del repositorio?
 
-El orden de ejecucion de las funciones Lambda seria el siguiente:
-    1. S3toS3
-    2. Read_QR_Code
 
-# Explicacion del funcionamiento de la funcion "S3toS3".
-
-La funcion "S3toS3", gracias a la posibilidad de Lambda de agregar disparadores o "triggers" para el arranque de sus funciones, identifica en las fotografias .jpg que se van subiendo al bucket origen (las cuales son frames tomados del video transmitido por AWS Kisensis Video Stream) los codigos QR por medio del uso del servicio de AWS Rekognition. Estas imagenes que cuentan con un codigo QR detectado son filtradas y enviadas a un segundo bucket destino donde se realizara su decodificacion y lectura.
-
-# Explicacion del funcionamiento de la funcion "Read_QR_Code"
-
-La funcion "Read_QR_Code", es iniciada por un disparador o "trigger" cuando las fotos filtradas por la funcion "S3toS3" llegan al bucket de destino indicado. Gracias al uso de librerias propias del lenguage Python, en este caso ZBAR, PIL y urlib, el codigo QR identificado es decodificado, la imagen es guardada dentro del directorio "/tmp" para luego decodificarla usando uso de la funcion decode. Una vez realizada la decodificacion, se envia la misma por el uso de un SNS topic previamente proporcionado para el recibimiento de la respuesta de la funcion.
