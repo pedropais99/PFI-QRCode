@@ -41,6 +41,10 @@ Para utilizar las librerias deberemos de descargarlas desde la consola de Clouds
 - Dentro de AWS Lambda iremos a la seccion de Layers y crearemos las layers correspondientes.
 ![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/dbbdf5c1-ad50-4b35-ba5b-b6f0ce31b6e7)
 ![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/b3a5d047-6136-4a03-8fb1-3a18e3e1ae04)
+- Creadas las layers, nos moveremos a nuestra funcion "ReadQRCode" y dentro de la solapa de "Code" al fondo de la pagina tendremos la opcion de agregar layers
+- Seleccionamos "Add a Layer" y cargamos las layers creadas anteriormente.
+![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/5953c900-203d-4682-b11d-c0a4d119da60)
+
 
 
 
