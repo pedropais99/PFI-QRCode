@@ -10,6 +10,7 @@ Se necesitaran:
 - Crear maquina virtual con sistema operativo Raspberry Pi para la retransmision de video en tiempo real.
   - Descargar dentro de la maquina virtual las librerias que permitan la retrasmision de video en tiempo real.
 - Registrar en AWS IoT la camara con la que se realizara el streaming de video a AWS Kinesis Video Stream.
+- Crear un video stream en AWS Kinesis Video Stream.
 - Crear un bucket S3 por funcion y otro para las librerias.
 - Crear un SNS Topic y estar suscripto al mismo.
 - Descargar librerias para la decodificacion de imagenes en AWS Lambda y configurarlas como layers de la funcion.
@@ -105,8 +106,27 @@ Vamos al paso 2 y otorgamos los permisos necesarios, donde crearemos nuestra nue
     ]
 }
 ```
+- Es imperativo que, como lo seteamos en el json, aws kinesis video stream retransmitira unicamente el video proveniente de una IoT Thing con su mismo nombre. Como llamamos a nuestra IoT Thing "pfi_camara1" nuestro kinesis video stream debera llamarse "pfi_camara1".
 
+Seleccionamos nuestra policy recien creada para nuestro IAM role, le damos un nombre y lo creamos.
 
+En el servicio de IoT Core ahora seleccionamos la opcion "Role aliases" dentro de la pestaña de "Security" y creamos un role alias para nuestro IAM role recien creado.
+
+![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/dfdb72e7-7909-4572-876e-b31e380f86be)
+
+Nos moveremos a la pestaña de Policies, crearemos una IoT policy para nuestro role alias (copiamos la arn de nuestro role alias).
+
+![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/36062c31-d3c6-4be8-bc58-05eb96cce491)
+
+Adjuntamos esta nueva policy a nuestra IoT Thing creada anteriormente.
+
+![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/5477fda8-e680-4ed8-a2d8-1193aa3e31e4)
+
+![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/3741844e-7246-479e-909b-a98bfe8ebbba)
+
+![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/3d965254-c536-45cf-a1e9-1238d4a42867)
+
+# Crear un video stream en AWS Kinesis Video Stream.
 
 # Crear un bucket S3 por funcion y otro para las librerias.
 
