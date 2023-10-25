@@ -149,7 +149,7 @@ export IOT_GET_CREDENTIAL_ENDPOINT=c1vj04g5aoy6qs.credentials.iot.us-east-1.amaz
 
 Seteadas las variables de entorno corremos el siguiente comando para comenzar a transmitir.
 ```
-./kvs_gstreamer_sample pfi_camara1 /home/pedropais/Desktop/QR.mp4
+./kvs_gstreamer_sample pfi_camara1 https://[ip del vehiculo autonomo]/route?topic=/camera_pkg/display_mjpeg&width=[valor a eleccion]$height=[valor a eleccion]
 ```
 
 # Crear un bucket S3 por funcion y otro para las librerias.
