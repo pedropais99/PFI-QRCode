@@ -12,10 +12,10 @@ Se necesitaran:
 - Registrar en AWS IoT la camara con la que se realizara el streaming de video a AWS Kinesis Video Stream.
 - Crear un video stream en AWS Kinesis Video Stream.
 - Crear un bucket S3 por funcion y otro para las librerias.
-- Crear un SNS Topic y estar suscripto al mismo.
-- Descargar librerias para la decodificacion de imagenes en AWS Lambda y configurarlas como layers de la funcion.
-- Configurar evento disparador (trigger) en AWS Lambda con S3 
 - Habilitacion para el guardado del video transmitio por AWS Kinesis Video Stream en formato de imagenes .jpg con el uso de del archivo "GuardarImagenes.json" del repositorio como se muestra en la imagen.
+- Configurar evento disparador (trigger) en AWS Lambda con S3.
+- Descargar librerias para la decodificacion de imagenes en AWS Lambda y configurarlas como layers de la funcion.
+- Crear un SNS Topic y estar suscripto al mismo.
 
 # Habilitar la conexion a la camara del vehiculo autonomo sin el uso de credenciales.
 
@@ -154,7 +154,34 @@ Seteadas las variables de entorno corremos el siguiente comando para comenzar a 
 
 # Crear un bucket S3 por funcion y otro para las librerias.
 
-# Crear un SNS Topic y estar suscripto al mismo.
+# Habilitacion para el guardado del video transmitio por AWS Kinesis Video Stream en formato de imagenes .jpg con el uso de del archivo "GuardarImagenes.json" del repositorio como se muestra en la imagen.
+  
+  ![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/1e5f3db5-3aa3-4f51-a021-2336221e6a1e)
+  ![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/a63c06df-b83a-41cd-832a-6ad77698d23b)
+  
+  Se debera pegar en la consola el siguiente comando:
+  ```
+  - aws kinesisvideo update-image-generation-configuration \
+  --cli-input-json file://./update-image-generation-GuardarImagenes.json \
+  ```
+  Comprobamos que el archivo se haya actualizado con el siguiente comando:
+  ```
+  - aws kinesisvideo describe-image-generation-configuration --stream-name pfi_camara1
+  ```
+  ![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/5c49673e-1a15-428a-ae8c-a0a5b40dd40b)
+
+# Configurar evento disparador (trigger) en AWS Lambda con S3
+- Estando en nuestra funcion Lambda, nos dirigiremos a la opcion de "Add trigger".
+
+![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/3e74d2b7-df9a-4c37-a313-2496c842d958)
+
+- Dentro de esta opcion, crearemos el trigger para que la funcion lambda corra siempre que un objeto sea creado dentro del bucket seleccionado.
+
+![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/64e75e59-9f3f-4716-8534-1cb6fbb58257)
+
+- Una vez terminado, seleccionamos "Add" y ya queda nuestro trigger configurado para la correcta ejecucion de la funcion.
+
+![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/466677e4-8c68-42e0-ae6a-fae48cf233d9)
 
 # Descargar librerias para la decodificacion de imagenes en AWS Lambda y configurarlas como layers de la funcion.
 
@@ -179,34 +206,7 @@ Para utilizar las librerias deberemos de descargarlas desde la consola de Clouds
   
 ![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/5953c900-203d-4682-b11d-c0a4d119da60)
 
-# Configurar evento disparador (trigger) en AWS Lambda con S3
-- Estando en nuestra funcion Lambda, nos dirigiremos a la opcion de "Add trigger".
-
-![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/3e74d2b7-df9a-4c37-a313-2496c842d958)
-
-- Dentro de esta opcion, crearemos el trigger para que la funcion lambda corra siempre que un objeto sea creado dentro del bucket seleccionado.
-
-![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/64e75e59-9f3f-4716-8534-1cb6fbb58257)
-
-- Una vez terminado, seleccionamos "Add" y ya queda nuestro trigger configurado para la correcta ejecucion de la funcion.
-
-![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/466677e4-8c68-42e0-ae6a-fae48cf233d9)
-
-# Habilitacion para el guardado del video transmitio por AWS Kinesis Video Stream en formato de imagenes .jpg con el uso de del archivo "GuardarImagenes.json" del repositorio como se muestra en la imagen.
-  
-  ![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/1e5f3db5-3aa3-4f51-a021-2336221e6a1e)
-  ![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/a63c06df-b83a-41cd-832a-6ad77698d23b)
-  
-  Se debera pegar en la consola el siguiente comando:
-  ```
-  - aws kinesisvideo update-image-generation-configuration \
-  --cli-input-json file://./update-image-generation-GuardarImagenes.json \
-  ```
-  Comprobamos que el archivo se haya actualizado con el siguiente comando:
-  ```
-  - aws kinesisvideo describe-image-generation-configuration --stream-name pfi_camara1
-  ```
-  ![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/5c49673e-1a15-428a-ae8c-a0a5b40dd40b)
+# Crear un SNS Topic y estar suscripto al mismo.
   
 
 
