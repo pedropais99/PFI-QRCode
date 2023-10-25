@@ -18,6 +18,28 @@ Se necesitaran:
 
 # Descargar dentro de la maquina virtual las librerias que permitan la retrasmision de video en tiempo real.
 
+Dentro de nuestra maquina virtual (vm) iremos a la consola y correremos el siguiente comando para comenzar la configuracion. Se hace un chequeo de que la maquina tenga las librerias necesarias para comenzar con el build y en caso de que no las tenga que las descargue.
+```
+sudo apt-get install cmake m4 git build-essential
+```
+Descargaremos las dependencias dadas por AWS clonando el siguiente repositorio en nuestra vm.
+```
+git clone https://github.com/awslabs/amazon-kinesis-video-streams-producer-sdk-cpp.git
+```
+Creamos el directorio "build" dentro de la carpeta de nuestro repositorio recien clonado y nos movemos a el.
+```
+mkdir -p amazon-kinesis-video-streams-producer-sdk-cpp/build
+cd amazon-kinesis-video-streams-producer-sdk-cpp/build
+```
+Ahora instalaremos las librerias requeridas dentro de este directorio
+```
+$ sudo apt-get install libssl-dev libcurl4-openssl-dev liblog4cplus-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev gstreamer1.0-plugins-base-apps gstreamer1.0-plugins-bad gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly gstreamer1.0-tools
+```
+Terminado el proceso, deberiamos de poder comenzar a generar la build para crear las muestras (samples), usando el siguiente comando.
+```
+cmake .. -DBUILD_GSTREAMER_PLUGIN=ON
+```
+
 # Habilitar la conexion a la camara del vehiculo autonomo sin el uso de credenciales.
 
 # Registrar en AWS IoT la camara con la que se realizara el streaming de video a AWS Kinesis Video Stream.
