@@ -6,15 +6,17 @@ En el siguiente documento, se explica el uso y se muestran las funciones utiliza
 
 En primer lugar es condicion necesaria y suficiente para el uso de las funciones que se encuentran en el repositorio el uso de una cuenta de AWS, manejo de Python y Linux. 
 Se necesitaran: 
+- Habilitar la conexion a la camara del vehiculo autonomo sin el uso de credenciales.
 - Crear maquina virtual con sistema operativo Raspberry Pi para la retransmision de video en tiempo real.
   - Descargar dentro de la maquina virtual las librerias que permitan la retrasmision de video en tiempo real.
-- Habilitar la conexion a la camara del vehiculo autonomo sin el uso de credenciales.
 - Registrar en AWS IoT la camara con la que se realizara el streaming de video a AWS Kinesis Video Stream.
 - Crear un bucket S3 por funcion y otro para las librerias.
 - Crear un SNS Topic y estar suscripto al mismo.
 - Descargar librerias para la decodificacion de imagenes en AWS Lambda y configurarlas como layers de la funcion.
 - Configurar evento disparador (trigger) en AWS Lambda con S3 
 - Habilitacion para el guardado del video transmitio por AWS Kinesis Video Stream en formato de imagenes .jpg con el uso de del archivo "GuardarImagenes.json" del repositorio como se muestra en la imagen.
+
+# Habilitar la conexion a la camara del vehiculo autonomo sin el uso de credenciales.
 
 # Descargar dentro de la maquina virtual las librerias que permitan la retrasmision de video en tiempo real.
 
@@ -35,12 +37,16 @@ Ahora instalaremos las librerias requeridas dentro de este directorio
 ```
 $ sudo apt-get install libssl-dev libcurl4-openssl-dev liblog4cplus-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev gstreamer1.0-plugins-base-apps gstreamer1.0-plugins-bad gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly gstreamer1.0-tools
 ```
-Terminado el proceso, deberiamos de poder comenzar a generar la build para crear las muestras (samples), usando el siguiente comando.
+Generamos la build para crear las muestras (samples), usando el siguiente comando.
 ```
 cmake .. -DBUILD_GSTREAMER_PLUGIN=ON
 ```
+Terminado el proceso, hacemos uso del comando ```make```.
+Chequeamos el contenido del directorio como se muestra en pantalla.
 
-# Habilitar la conexion a la camara del vehiculo autonomo sin el uso de credenciales.
+![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/6fdab767-7454-4b3a-934c-74524d5fd57e)
+
+Se puede ver que contamos con los archivos ```kvs_gstreamer_sample``` (archivo que usaremos para la retransmision de video y ```libgstkvssink.so``` (plugin que tambien podemos utilizar).
 
 # Registrar en AWS IoT la camara con la que se realizara el streaming de video a AWS Kinesis Video Stream.
 
