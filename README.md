@@ -50,6 +50,64 @@ Se puede ver que contamos con los archivos ```kvs_gstreamer_sample``` (archivo q
 
 # Registrar en AWS IoT la camara con la que se realizara el streaming de video a AWS Kinesis Video Stream.
 
+Continuando con la configuracion del entorno de streaming de video, ahora se debera ir a la consola de AWS y buscar el servicio "IoT Core"
+
+![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/2d09514f-cb34-414c-beba-58926c60d8ac)
+
+Buscamos en la barra lateral izquierda la seccion de "Manage" --> "All devices" --> "Thing type", donde crearemos un thing type.
+
+![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/c598a1ff-8593-4336-8bd4-3c19ce902020)
+
+Creado el thing type, iremos a "Manage" --> "All devices" --> "Things" y crearemos una de la siguiente manera.
+
+![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/aa37bbe6-6d2d-4335-836f-f43aabb8286d)
+
+![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/3b0e4f6d-6c7a-48d2-9a5f-0a6ff2d9e0bc)
+
+En este punto nos daran la opcion de adjuntar una politica a nuestra IoT Thing, saltearemos este paso porque se necesita crear una politica nueva para que la IoT Thing funcione correctamente.
+
+Descargamos los siguientes certificados.
+
+![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/78268c5e-4810-418d-85dd-00a7320b8d14)
+
+Nos moveremos a AWS IAM, donde tomaremos la siguiente ruta AWS IAM --> Roles --> Create Role --> Custom Trust Policy y copiamos el siguiente json.
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "credentials.iot.amazonaws.com"
+            },
+            "Action": "sts:AssumeRole"
+        }
+    ]
+}
+```
+Vamos al paso 2 y otorgamos los permisos necesarios, donde crearemos nuestra nueva policy con los siguientes permisos.
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "kinesisvideo:DescribeStream",
+                "kinesisvideo:PutMedia",
+                "kinesisvideo:TagStream",
+                "kinesisvideo:GetDataEndpoint"
+            ],
+            "Resource": "arn:aws:kinesisvideo:*:*:stream/${credentials-iot:ThingName}/*"
+        }
+    ]
+}
+```
+
+
+
 # Crear un bucket S3 por funcion y otro para las librerias.
 
 # Crear un SNS Topic y estar suscripto al mismo.
