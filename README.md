@@ -20,6 +20,8 @@ Se necesitaran:
 
 # Habilitar la conexion a la camara del vehiculo autonomo sin el uso de credenciales.
 
+# Registrar en AWS IoT la camara con la que se realizara el streaming de video a AWS Kinesis Video Stream.
+
 # Crear un bucket S3 por funcion y otro para las librerias.
 
 # Crear un SNS Topic y estar suscripto al mismo.
