@@ -126,7 +126,31 @@ Adjuntamos esta nueva policy a nuestra IoT Thing creada anteriormente.
 
 ![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/3d965254-c536-45cf-a1e9-1238d4a42867)
 
-# Crear un video stream en AWS Kinesis Video Stream.
+# Crear un video stream en AWS Kinesis Video Stream (kvs).
+
+Crearemos un video stream en kvs para la retransmision de video en tiempo real de la camara del vehiculo autonomo pasando por nuestra vm y IoT Thing (recordar que el nombre del video stream debe ser el mismo que el de la IoT Thing creada previamente).
+
+![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/42f0b8c1-41f0-46ca-8aaa-8c3fd2178ebb)
+
+Para utilizar nuestro video stream, debemos de copiar los certificados descargados en pasos anteriores dentro de nuestra vm en el directorio /build creado como se muestra en pantalla.
+
+![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/2ba3bebe-7a21-4f8e-9de9-d862df060ac8)
+
+Hecho esto comenzamos a probar nuestro streaming de video con los siguientes comandos para setear las variables de entorno, parados en el directorio ```/amazon-kinesis-video-streams-producer-sdk-cpp/build```
+ - Obtenemos la variable "IOT_GET_CREDENTIAL_ENDPOINT" usando el comando ```aws iot describe-endpoint --endpoint-type iot:CredentialProvider``` en AWS Cloudshell
+```
+export AWS_DEFAULT_REGION=us-east-1
+export CERT_PATH=certs/certificate.pem.crt
+export PRIVATE_KEY_PATH=certs/private.pem.key
+export CA_CERT_PATH=certs/AmazonRootCA1.pem
+export ROLE_ALIAS=CamaraIoTRoleAlias
+export IOT_GET_CREDENTIAL_ENDPOINT=c1vj04g5aoy6qs.credentials.iot.us-east-1.amazonaws.com
+```
+
+Seteadas las variables de entorno corremos el siguiente comando para comenzar a transmitir.
+```
+./kvs_gstreamer_sample pfi_camara1 /home/pedropais/Desktop/QR.mp4
+```
 
 # Crear un bucket S3 por funcion y otro para las librerias.
 
