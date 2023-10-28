@@ -240,8 +240,20 @@ Para utilizar las librerias deberemos de descargarlas desde la consola de Clouds
 ![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/5953c900-203d-4682-b11d-c0a4d119da60)
 
 # Crear un SNS Topic y estar suscripto al mismo.
-  
 
+Para poder enviar las respuestas de los codigos QR a los usuarios, se estara utilizando el servicio AWS SNS. Mostramos los pasos para su configuracion.
+
+![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/10a17eab-f45a-44e9-aaf1-17ef6f09b848)
+
+![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/7850be02-c189-418a-9b75-87e70a5c3b68)
+
+![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/6090a106-ba45-478b-91b9-2fac859bd808)
+
+![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/f7aef784-5ecf-4463-a068-1575c6736f2e)
+
+![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/f8201974-ce59-405d-811e-f208b2098b85)
+
+Una vez confirmadada la subscripcion a nuestro topico, pasaremos a recibir las lecturas de los codigos QR como mensajes de SNS.
 
 
 
