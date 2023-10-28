@@ -20,21 +20,23 @@ Se necesitaran:
 # Habilitar la conexion a la camara del vehiculo autonomo sin el uso de credenciales.
 
 Para habilitar la conexion al vehiculo autonomo para la retransmision de video deberemos de conectarnos al mismo mediante ssh con las credenciales dadas por la institucion.
-´´´
+```
 ssh usuario:password@[IPVehiculoAutonmo]
-´´´
+```
 Dentro del mismo, corremos el siguiente comando para generar un backup del archivo que vamos a modificar
-´´´
+```
 mkdir -p /home/deepracer/backup
 cp /opt/aws/deepracer/lib/device_console/static/bundle.js /home/deepracer/backup/
 cp /etc/nginx/sites-enabled/default /home/deepracer/backup/site-config
-´´´
+```
 Generado el backup, ahora corremos este comando
-´´´
+```
 sudo sed -i "s/isVideoPlaying\: true/isVideoPlaying\: false/" /opt/aws/deepracer/lib/device_console/static/bundle.js
 sudo sed -i "s/auth_request \/auth;/#auth_request \/auth;/" /etc/nginx/sites-enabled/default
 systemctl restart nginx
-´´´
+```
+
+Se agredece a Matias Kreder por habernos ayudado a realizar la configuracion recien vista.
 
 # Descargar dentro de la maquina virtual las librerias que permitan la retrasmision de video en tiempo real.
 
