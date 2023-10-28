@@ -173,6 +173,20 @@ Seteadas las variables de entorno corremos el siguiente comando para comenzar a 
 
 # Crear un bucket S3 por funcion y otro para las librerias.
 
+Para guardar las fotografias tomadas por AWS KVS y las librerias utilizadas en las funciones lambda crearemos 3 buckets S3 (uno para guardar las librerias y otros 2 para el guardado de imagenes). 
+
+Seguimos los siguientes pasos, hay que tener en cuenta que los buckets S3 y las funciones lambda deben de estar en la misma region (en nuestro caso es us-east-1).
+
+![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/66d12a30-b647-4ce6-965a-08edd795d244)
+
+![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/1376657f-b86f-4f81-b7e9-08815a2a9f4e)
+
+![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/6f4a7ec5-fd16-41c2-a51e-9bd8c1e51290)
+
+![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/64701656-dbfd-41e0-b812-7ee29cfd60be)
+
+Dejamos los demas campos y creamos el bucket. Repetimos el proceso hasta crear la cantidad de buckets necesarios.
+
 # Habilitacion para el guardado del video transmitio por AWS Kinesis Video Stream en formato de imagenes .jpg con el uso de del archivo "GuardarImagenes.json" del repositorio como se muestra en la imagen.
   
   ![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/1e5f3db5-3aa3-4f51-a021-2336221e6a1e)
