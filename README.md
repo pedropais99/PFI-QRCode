@@ -194,7 +194,7 @@ Dejamos los demas campos y creamos el bucket. Repetimos el proceso hasta crear l
   
   Se debera pegar en la consola el siguiente comando:
   ```
-  - aws kinesisvideo update-image-generation-configuration \
+  aws kinesisvideo update-image-generation-configuration \
   --cli-input-json file://./update-image-generation-GuardarImagenes.json \
   ```
   Comprobamos que el archivo se haya actualizado con el siguiente comando:
