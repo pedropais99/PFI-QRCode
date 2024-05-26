@@ -195,11 +195,11 @@ Dejamos los demas campos y creamos el bucket. Repetimos el proceso hasta crear l
   Se debera pegar en la consola el siguiente comando:
   ```
   aws kinesisvideo update-image-generation-configuration \
-  --cli-input-json file://./update-image-generation-GuardarImagenes.json \
+  --cli-input-json file://./GuardarImagenes.json \
   ```
   Comprobamos que el archivo se haya actualizado con el siguiente comando:
   ```
-  - aws kinesisvideo describe-image-generation-configuration --stream-name pfi_camara1
+  aws kinesisvideo describe-image-generation-configuration --stream-name pfi_camara1
   ```
   ![image](https://github.com/pedropais99/PFI-QRCode/assets/89282156/5c49673e-1a15-428a-ae8c-a0a5b40dd40b)
 
